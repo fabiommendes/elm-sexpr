@@ -1,0 +1,27 @@
+{
+  "name": "elm-sexpr",
+  "version": "1.0.0",
+  "description": "S-expressions decoders and encoders.",
+  "main": "index.js",
+  "directories": {
+    "example": "example",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node_modules/elm-test/bin/elm-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabiommendes/elm-sexpr.git"
+  },
+  "author": "Fábio Macêdo Mendes",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/fabiommendes/elm-sexpr/issues"
+  },
+  "homepage": "https://github.com/fabiommendes/elm-sexpr#readme",
+  "devDependencies": {
+    "elm-format": "^0.6.1-alpha",
+    "elm-test": "0.18.2"
+  }
+}
