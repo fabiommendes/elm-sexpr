@@ -2,17 +2,23 @@
 
 S-expressions are a useful data structure used in LISP to represent pretty much
 everything. If you are like me, you might even want to produce JSON like this:
-`["date", 2017, 10, 1]`, which I think is neat, but are a real pain to handle 
-with Json.Decode and Json.Encode.
 
-This package provides convenient encoders and decoders for S-expression like
-data structures so you do not shy away from them in your API ;)
+```json
+["date", 2017, 10, 1]
+```
+
+which I think is neat, but are a real pain to handle with Json.Decode and 
+Json.Encode.
+
+This package provides convenient encoders and decoders for S-expression 
+structures so you do not have to shy away from using them in your API ;)
 
 ## Features
 
-* An `sexpr [int, int, int]` encoder and decoder.
-* An simple SExpr type that can be easily converted to other types.
-* Handles up to 8 arguments in the SExpr.
+* Tuple encoder/decoder: `tuple2 (int, int)`.
+* S-expression encoder/decoder: `exp2 ["point", int, int]`.
+* Handles up to 8 arguments in the S-expression and 9 in the tuple.
+* Support for complex decoders for union types.
 
 ## Basic usage: decoding
 
@@ -27,9 +33,10 @@ type alias Date =
     }
 
 
--- This converts JSON data such as ["date", 2017, 10, 1] to Elm date values 
+-- This creates a decoder that reads JSON data such as ["date", 2017, 10, 1]
+-- and convert it to Elm date values 
 
-dateDecoder = sexpr3 "date" (Date, int, int, int)
+date = exp3 ("date", int, int, int) Date
 ```
 
 ## Basic usage: encoding
@@ -45,10 +52,10 @@ type alias Date =
     }
 
 
--- This converts Date elements to JSON data such as ["date", 2017, 10, 1] 
--- In order to perform this conversion, we need a function that flatten
--- a Date structure into a tuple.
+-- This converts Date elements to JSON S-expressions such as 
+-- ["date", 2017, 10, 1]. In order to perform this conversion, we need 
+-- a function that flatten a Date object into a tuple.
 
-dateEncoder = enc3 ("date", int, int, int) 
+date = exp3 ("date", int, int, int)
     (\date -> (date.year, date.month, date.day))
 ```
