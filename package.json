@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/fabiommendes/elm-sexpr#readme",
   "devDependencies": {
-    "elm-format": "^0.6.1-alpha",
+    "elm-format": "^0.7.0-exp",
     "elm-test": "0.18.2"
   }
 }
